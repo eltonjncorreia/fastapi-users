@@ -39,7 +39,6 @@ class UserCreateResponse(BaseModel):
     id: int
     name: str
     email: str
-    password: str
     role_id: int
     created_at: str
     updated_at: str

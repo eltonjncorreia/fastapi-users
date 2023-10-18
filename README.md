@@ -8,12 +8,43 @@ docker compose up -d
 
 ##### Acesse o link para abrir a documentação da API.
 
-http://localhost:8000/docs
+Para ver a documentação no endereço: http://localhost:8000/docs
 
 
-## Pre-commit 
+# Solicitação POST para /users/
 
-#### Instalação
+## Visão Geral
+Este documento descreve como fazer uma solicitação POST para o endpoint `/users/` para criar um novo usuário no sistema. O exemplo de payload fornecido será enviado no corpo da solicitação.
+
+## Endpoint
+- **URL**: `http://localhost:8000/users/`
+- **Método**: POST
+
+## Payload
+```json
+{
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "password": "hashed_password",
+    "role_id": 2,
+    "created_at": "2023-10-18",
+    "updated_at": "2023-10-19",
+    "role": {
+        "description": "Moderator"
+    },
+    "claims": [
+        {
+            "description": "Claim A",
+            "active": true
+        }
+    ]
+}
+```
+
+
+## Desenvolvimento 
+
+#### Instalação do pre-commit
 
 Antes de executar os hooks, você precisa ter o gerenciador de pacotes de pre-commit instalado.
 
