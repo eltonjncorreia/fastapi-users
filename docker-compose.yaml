@@ -23,3 +23,13 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  pytest:
+    build: .
+    env_file: .env
+    volumes:
+      - .:/app
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c "pytest tests -s -x --cov=src -vv"

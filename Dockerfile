@@ -7,7 +7,7 @@ RUN pip install poetry
 COPY . .
 
 # Instale as dependências do Poetry
-RUN poetry install --no-dev
+RUN poetry install
 
 EXPOSE 8000
 
