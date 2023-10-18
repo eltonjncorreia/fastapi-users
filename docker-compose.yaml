@@ -23,6 +23,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    command: [ "poetry", "run", "uvicorn", "--host", "0.0.0.0", "src.main:app" ]
 
   pytest:
     build: .
@@ -32,4 +33,4 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    command: sh -c "pytest tests -s -x --cov=src -vv"
+    command: ["sh", "-c", "pytest tests -s -x --cov=src -vv"]

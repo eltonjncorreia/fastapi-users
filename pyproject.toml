@@ -24,7 +24,7 @@ httpx = "^0.25.0"
 pytest-cov = "^4.1.0"
 
 [tool.pytest.ini_options]
-pythonpath = "."q
+pythonpath = "."
 
 [build-system]
 requires = ["poetry-core"]
