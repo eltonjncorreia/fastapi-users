@@ -1,26 +1,32 @@
 # FastAPI Users
 
-# Para executar a aplicação
+### Executar a aplicação
 
 ```bash
 docker compose up -d
 ```
+
+### Executar a criação das tabelas
+```bash
+docker compose run --rm app alembic upgrade head
+```
+
 
 ##### Acesse o link para abrir a documentação da API.
 
 Para ver a documentação no endereço: http://localhost:8000/docs
 
 
-# Solicitação POST para /users/
+## Solicitação POST para `/users/`
 
-## Visão Geral
+### Visão Geral
 Este documento descreve como fazer uma solicitação POST para o endpoint `/users/` para criar um novo usuário no sistema. O exemplo de payload fornecido será enviado no corpo da solicitação.
 
-## Endpoint
+### Endpoint
 - **URL**: `http://localhost:8000/users/`
 - **Método**: POST
 
-## Payload
+### Payload
 ```json
 {
     "name": "John Doe",

@@ -34,13 +34,3 @@ services:
       db:
         condition: service_healthy
     command: ["sh", "-c", "pytest tests -s -x --cov=src -vv"]
-
-  alembic:
-    build: .
-    env_file: .env
-    volumes:
-      - .:/app
-    depends_on:
-      db:
-        condition: service_healthy
-    command: ["./scripts/run-migrations.sh" ]
