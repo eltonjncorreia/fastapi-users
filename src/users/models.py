@@ -40,6 +40,7 @@ class User(Base):
     updated_at = Column(Date, nullable=True)
 
     role = relationship("Role", backref="users")
+    claims = relationship("Claim", secondary="user_claims", backref="users")
 
 
 class UserClaim(Base):

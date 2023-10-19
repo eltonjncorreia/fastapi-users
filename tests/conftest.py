@@ -1,7 +1,6 @@
 from typing import Dict
 
 import pytest
-
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -47,4 +46,18 @@ def payload_create_user() -> Dict:
         "updated_at": "2023-10-19",
         "role": {"description": "Moderator"},
         "claims": [{"description": "Claim A", "active": True}],
+    }
+
+
+@pytest.fixture
+def response_create_user() -> Dict:
+    return {
+        "id": 23,
+        "name": "Elton Correia",
+        "email": "elton@example.com",
+        "role_id": 59,
+        "created_at": "2023-10-18",
+        "updated_at": "2023-10-19",
+        "role": {"id": 59, "description": "Moderator"},
+        "claims": [{"id": 59, "description": "Claim A", "active": True}],
     }

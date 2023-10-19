@@ -9,33 +9,35 @@ class UserRepository:
     def __init__(self, session):
         self.session = session
 
-    def create(self, user: UserCreate) -> User:
+    def create(self, user_create: UserCreate) -> User:
         try:
-            role = Role(description=user.role.description)
+            role = Role(description=user_create.role.description)
             self.session.add(role)
 
-            user_model = User(
-                name=user.name,
-                email=user.email,
-                password=user.password,
+            user = User(
+                name=user_create.name,
+                email=user_create.email,
+                password=user_create.password,
                 role=role,
-                created_at=user.created_at,
-                updated_at=user.updated_at,
+                created_at=user_create.created_at,
+                updated_at=user_create.updated_at,
             )
-            self.session.add(user_model)
+            self.session.add(user)
 
-            for claim_data in user.claims:
+            for claim_data in user_create.claims:
                 claim = Claim(
                     description=claim_data.description,
                     active=claim_data.active,
                 )
                 self.session.add(claim)
-                user_claim = UserClaim(user_id=user_model, claim_id=claim)
+                self.session.flush()
+
+                user_claim = UserClaim(user_id=user.id, claim_id=claim.id)
                 self.session.add(user_claim)
 
             self.session.commit()
 
-            return user_model
+            return user
 
         except Exception as e:
             self.session.rollback()
